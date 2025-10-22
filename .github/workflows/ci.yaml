@@ -14,7 +14,8 @@ jobs:
         uses: actions/checkout@v5
       - name: set up docker
         uses: docker/setup-docker-action@v4
-      - run: |
-          docker version
+      - name: set up docker-model-plugin
+        run: |
+          sudo apt-get update
           sudo apt-get install docker-model-plugin
           docker model version
