@@ -1,1 +1,1 @@
-# sample-score-genai
+# sample-score-genai-app
