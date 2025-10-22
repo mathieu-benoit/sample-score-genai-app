@@ -7,14 +7,6 @@ on:
   push:
     branches: [main]
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: set up docker-model-plugin
-        run: |
-          curl -X POST -s "http://172.17.0.1:12434/models/create" -d @- << EOF
-          {"from": "ai/qwen2.5:0.5B-F16"}
-          EOF
   hello-genai-in-go:
     runs-on: ubuntu-latest
     steps:
@@ -38,10 +30,6 @@ jobs:
           # Update and Install
           sudo apt-get update
           sudo apt-get install -y docker-model-plugin
-      - run: |
-          curl -X POST -s "http://172.17.0.1:12434/models/create" -d @- << EOF
-          {"from": "ai/qwen2.5:0.5B-F16"}
-          EOF
       - name: make compose-test
         run: |
           cd hello-genai-in-go
