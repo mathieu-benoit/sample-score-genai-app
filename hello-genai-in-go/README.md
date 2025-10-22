@@ -24,14 +24,7 @@ This code is coming from https://github.com/docker/hello-genai.
 ### Using Docker Compose
 
 ```bash
-docker compose up
-```
-
-### Using Docker
-
-```bash
-docker build -t hello-genai-go .
-docker run -p 8080:8080 -e LLM_BASE_URL=http://your-llm-api -e LLM_MODEL_NAME=your-model hello-genai-go
+make compose-up
 ```
 
 ### Without Docker
@@ -39,5 +32,5 @@ docker run -p 8080:8080 -e LLM_BASE_URL=http://your-llm-api -e LLM_MODEL_NAME=yo
 ```bash
 export LLM_BASE_URL=http://your-llm-api
 export LLM_MODEL_NAME=your-model
-go run main.go
+make go-up
 ```
