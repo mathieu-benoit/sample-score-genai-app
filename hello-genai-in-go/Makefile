@@ -20,3 +20,8 @@ go-up:
 .PHONY: compose-up
 compose-up:
 	docker compose up --build -d --remove-orphans
+
+## Test directly llama Docker Model.
+.PHONY: llama-model-test
+llama-model-test:
+	docker model run ai/llama3.2:1B-Q8_0 "Explain Docker in one sentence"
