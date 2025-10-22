@@ -16,12 +16,19 @@ help:
 go-up:
 	go run main.go
 
+## Test directly llama Docker Model.
+.PHONY: llama-model-test
+llama-model-test:
+	docker model run ai/llama3.2:1B-Q8_0 "Explain Docker in one sentence"
+
 ## Run Docker Compose.
 .PHONY: compose-up
 compose-up:
 	docker compose up --build -d --remove-orphans
 
-## Test directly llama Docker Model.
-.PHONY: llama-model-test
-llama-model-test:
-	docker model run ai/llama3.2:1B-Q8_0 "Explain Docker in one sentence"
+## Test Docker Compose.
+.PHONY: compose-test
+compose-test: compose-up
+	sleep 5
+	curl localhost:8080
+	curl localhost:8080/health
