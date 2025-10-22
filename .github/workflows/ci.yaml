@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v5
+      - name: set up docker
+        uses: docker/setup-docker-action@v4
       - run: |
           docker version
           docker model version
