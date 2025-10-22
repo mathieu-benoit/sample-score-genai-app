@@ -89,15 +89,15 @@ func loadConfig() Configuration {
 	}
 
 	// Use Docker Model Runner injected variables
-	llamaURL := os.Getenv("LLAMA_URL")
-	llamaModel := os.Getenv("LLAMA_MODEL")
+	llmBaseURL := os.Getenv("LLM_BASE_URL")
+	llmModelName := os.Getenv("LLM_MODEL_NAME")
 	
-	if llamaURL == "" {
-		logger.Println("WARNING: No LLM endpoint configured. Set LLAMA_URL.")
+	if llmBaseURL == "" {
+		logger.Println("WARNING: No LLM endpoint configured. Set LLM_BASE_URL.")
 	}
 
-	if llamaModel == "" {
-		logger.Println("WARNING: No LLM model configured. Set LLAMA_MODEL.")
+	if llmModelName == "" {
+		logger.Println("WARNING: No LLM model configured. Set LLM_MODEL_NAME.")
 	}
 
 	logLevel := os.Getenv("LOG_LEVEL")
@@ -107,8 +107,8 @@ func loadConfig() Configuration {
 
 	return Configuration{
 		Port:        port,
-		LLMBaseURL:  llamaURL,
-		LLMModelName: llamaModel,
+		LLMBaseURL:  llmBaseURL,
+		LLMModelName: llmModelName,
 		LogLevel:    logLevel,
 		Version:     "1.0.0",
 	}

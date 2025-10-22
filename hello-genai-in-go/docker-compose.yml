@@ -9,8 +9,8 @@ services:
       - PORT=8080
     models:
       llama:
-        endpoint_var: LLAMA_URL
-        model_var: LLAMA_MODEL
+        endpoint_var: LLM_BASE_URL
+        model_var: LLM_MODEL_NAME
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
