@@ -13,7 +13,7 @@ RUN go mod tidy && go mod download
 COPY . .
 
 # Build the application
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags "-s -w" -installsuffix cgo -o main .
 
 # Final stage
 FROM gcr.io/distroless/static:nonroot
