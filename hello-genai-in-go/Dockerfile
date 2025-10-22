@@ -3,9 +3,6 @@ FROM golang:1.25-alpine AS builder
 
 WORKDIR /app
 
-# Install git for dependency fetching
-RUN apk add --no-cache git
-
 # Copy go.mod first
 COPY go.mod ./
 
@@ -19,7 +16,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 # Final stage
-FROM alpine:3.18
+FROM alpine:3.22
 
 WORKDIR /app
 
