@@ -30,5 +30,7 @@ compose-up:
 .PHONY: compose-test
 compose-test: compose-up
 	sleep 5
-	curl localhost:8080
-	curl localhost:8080/health
+	curl http://localhost:8080
+	curl http://localhost:8080/health
+	curl -s -X POST http://localhost:8080/api/chat -H "Content-Type: application/json" -d '{"message": "Hello!"}' --max-time 60
+	curl -s -X POST http://localhost:8080/api/chat -H "Content-Type: application/json" -d '{"message": "!modelinfo"}' --max-time 10
