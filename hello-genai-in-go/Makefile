@@ -20,7 +20,8 @@ go-up:
 .PHONY: llama-model-test
 llama-model-test:
 	# docker model run ai/gemma3 "Tell me a joke about container"
-	docker model run ai/llama3.2:1B-Q8_0 "Explain Docker in one sentence"
+	# docker model run ai/llama3.2:1B-Q8_0 "Explain Docker in one sentence"
+	docker model run ai/smollm2:135M-Q4_0 "Explain Docker in one sentence"
 
 WORKLOAD_NAME = hello-genai
 CONTAINER_NAME = hello-genai
