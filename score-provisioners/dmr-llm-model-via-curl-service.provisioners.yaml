@@ -1,6 +1,6 @@
-- uri: template://community-provisioners/dmr-llm-model-via-service-provider
+- uri: template://community-provisioners/dmr-llm-model-via-curl
   type: llm-model
-  description: Generate the llm model service via the DMR provider.
+  description: FIXME.
   supported_params:
     - model
   outputs: |
@@ -15,7 +15,5 @@
     model: {{ .Params.model | default "ai/smollm2:135M-Q4_0" }}
   services: |
     {{ .Id }}:
-      provider:
-        type: model
-        options:
-          model: {{ .Init.model }}
+      image: curlimages/curl:latest
+      command: ["curl", "-v", "-d", '{"from": "{{ .Init.model }}"}', "http://172.17.0.1:12434/models/create"]
