@@ -22,9 +22,24 @@ llama-model-test:
 	# docker model run ai/gemma3 "Tell me a joke about container"
 	docker model run ai/llama3.2:1B-Q8_0 "Explain Docker in one sentence"
 
-## Run Docker Compose.
+WORKLOAD_NAME = hello-genai
+CONTAINER_NAME = hello-genai
+CONTAINER_IMAGE = ${WORKLOAD_NAME}:test
+
+.score-compose/state.yaml:
+	score-compose init \
+		--no-sample \
+		--no-default-provisioners \
+		--provisioners ../score-provisioners/dmr-llm-model-via-service-provider.provisioners.yaml
+
+compose.yaml: score.yaml .score-compose/state.yaml Makefile
+	score-compose generate score.yaml \
+		--build '${CONTAINER_NAME}={"context":".","tags":["${CONTAINER_IMAGE}"]}' \
+		--publish 8080:${CONTAINER_NAME}:8080
+
+## Generate a compose.yaml file from the score spec and launch it.
 .PHONY: compose-up
-compose-up:
+compose-up: compose.yaml
 	docker compose up --build -d --remove-orphans
 
 ## Test Docker Compose.

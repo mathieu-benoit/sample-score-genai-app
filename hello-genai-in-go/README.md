@@ -21,10 +21,22 @@ This code is coming from https://github.com/docker/hello-genai.
 
 ## Running the Application
 
-### Using Docker Compose
+### Using Docker Compose with `score-compose`
 
 ```bash
 make compose-up
+```
+
+```bash
+score-compose provisioners list
+```
+
+```none
++-----------+-------+--------+---------------------+------------------------------------------------------+
+|   TYPE    | CLASS | PARAMS |       OUTPUTS       |                     DESCRIPTION                      |
++-----------+-------+--------+---------------------+------------------------------------------------------+
+| llm-model | (any) | model  | api-key, model, url | Generate the llm model service via the DMR provider. |
++-----------+-------+--------+---------------------+------------------------------------------------------+
 ```
 
 ### Without Docker

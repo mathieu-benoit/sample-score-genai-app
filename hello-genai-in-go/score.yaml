@@ -1,0 +1,30 @@
+apiVersion: score.dev/v1b1
+metadata:
+  name: hello-genai
+  annotations:
+    tags: "golang,http,genai,llm,llama"
+containers:
+  hello-genai:
+    image: .
+    variables:
+      PORT: "8080"
+      LLM_MODEL_NAME: "${resources.llama.model}"
+      LLM_BASE_URL: "${resources.llama.url}"
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+    readinessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+resources:
+  llama:
+    type: llm-model
+    params:
+      model: ai/llama3.2:1B-Q8_0
+service:
+  ports:
+    tcp:
+      port: 8080
+      targetPort: 8080

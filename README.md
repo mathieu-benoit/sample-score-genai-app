@@ -2,6 +2,14 @@
 
 - [`hello-genai-in-go`](./hello-genai-in-go/)
 
+TODOs:
+- [ ] `llm-model` dmr provisioner with curl
+- [ ] More resilient tests in CI
+- [ ] Codespace setup with DMR
+- [ ] `llm-model` provisioner with ollama service
+- [ ] Open WebUI
+- [ ] Illustrate this use case: https://github.com/k33g/hawaiian-pizza-expert/tree/main/06-pizza-expert-mcp
+- [ ] Kubernetes
 
 ## Resources:
 
