@@ -19,6 +19,7 @@ go-up:
 ## Test directly llama Docker Model.
 .PHONY: llama-model-test
 llama-model-test:
+	# docker model run ai/gemma3 "Tell me a joke about container"
 	docker model run ai/llama3.2:1B-Q8_0 "Explain Docker in one sentence"
 
 ## Run Docker Compose.
