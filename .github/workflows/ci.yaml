@@ -35,7 +35,7 @@ jobs:
         with:
           file: score-compose
           token: ${{ secrets.GITHUB_TOKEN }}
-          version: ${{ env.SCORE_COMPOSE_VERSION }}
+          version: 'latest'
       - name: make compose-test
         run: |
           cd hello-genai-in-go
