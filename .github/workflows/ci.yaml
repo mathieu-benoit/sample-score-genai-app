@@ -30,6 +30,12 @@ jobs:
           # Update and Install
           sudo apt-get update
           sudo apt-get install -y docker-model-plugin
+      - name: install score-compose
+        uses: score-spec/setup-score@v3
+        with:
+          file: score-compose
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ env.SCORE_COMPOSE_VERSION }}
       - name: make compose-test
         run: |
           cd hello-genai-in-go
