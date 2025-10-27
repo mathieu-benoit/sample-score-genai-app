@@ -1,6 +1,6 @@
 - uri: template://community-provisioners/dmr-llm-model-via-service-provider
   type: llm-model
-  description: Generate the llm model service via the DMR provider.
+  description: Generates the LLM model service via the Docker Model Runner (DMR) provider.
   supported_params:
     - model
   outputs: |

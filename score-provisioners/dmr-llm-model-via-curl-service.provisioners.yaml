@@ -1,6 +1,6 @@
 - uri: template://community-provisioners/dmr-llm-model-via-curl
   type: llm-model
-  description: FIXME.
+  description: Generates a curl service downloading the model with the Docker Model Runner (DMR).
   supported_params:
     - model
   outputs: |
