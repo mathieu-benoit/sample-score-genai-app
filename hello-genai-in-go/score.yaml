@@ -8,8 +8,8 @@ containers:
     image: .
     variables:
       PORT: "8080"
-      LLM_MODEL_NAME: "${resources.llama.model}"
-      LLM_BASE_URL: "${resources.llama.url}"
+      LLM_MODEL_NAME: "${resources.model.model}"
+      LLM_BASE_URL: "${resources.model.url}"
     livenessProbe:
       httpGet:
         path: /health
@@ -19,7 +19,7 @@ containers:
         path: /health
         port: 8080
 resources:
-  llama:
+  model:
     type: llm-model
     params:
       model: ai/smollm2:135M-Q4_0
