@@ -47,3 +47,8 @@ compose-up: compose.yaml
 compose-test: compose-up
 	sleep 5
 	curl http://localhost:8080
+
+## Delete the containers running via compose down.
+.PHONY: compose-down
+compose-down:
+	docker compose down -v --remove-orphans || true

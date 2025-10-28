@@ -51,3 +51,8 @@ compose-test: compose-up
 	curl http://localhost:8080/health
 	curl -s -X POST http://localhost:8080/api/chat -H "Content-Type: application/json" -d '{"message": "Hello!"}' --max-time 30
 	curl -s -X POST http://localhost:8080/api/chat -H "Content-Type: application/json" -d '{"message": "!modelinfo"}' --max-time 10
+
+## Delete the containers running via compose down.
+.PHONY: compose-down
+compose-down:
+	docker compose down -v --remove-orphans || true
