@@ -34,7 +34,7 @@ CONTAINER_IMAGE = ${WORKLOAD_NAME}:test
 
 compose.yaml: score.yaml .score-compose/state.yaml Makefile
 	score-compose generate score.yaml \
-		--image ghcr.io/open-webui/open-webui:main \
+		--image ghcr.io/open-webui/open-webui:main-slim \
 		--publish 8080:${CONTAINER_NAME}:8080
 
 ## Generate a compose.yaml file from the score spec and launch it.
