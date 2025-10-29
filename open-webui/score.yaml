@@ -7,19 +7,28 @@ containers:
   open-webui:
     image: .
     variables:
-      OPENAI_API_BASE_URL: "${resources.model.url}"
-      OPENAI_API_KEY: "${resources.model.api-key}"
+      OPENAI_API_BASE_URL: "${resources.smollm2.url}"
+      OPENAI_API_KEY: "${resources.smollm2.api-key}"
       WEBUI_NAME: "Hello, DMR with Score Compose!"
+      WEBUI_AUTH: "true"
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+    readinessProbe:
+      httpGet:
+        path: /health
+        port: 8080
     volumes:
       /app/backend/data:
         source: ${resources.data}
 resources:
   data:
     type: volume
-  model:
+  smollm2:
     type: llm-model
     params:
-      model: ai/smollm2:135M-Q4_0
+      model: ai/smollm2:135M-Q2_K
 service:
   ports:
     tcp:
