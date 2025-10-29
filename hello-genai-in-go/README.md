@@ -27,22 +27,6 @@ This code is coming from https://github.com/docker/hello-genai.
 make compose-up
 ```
 
-```bash
-score-compose provisioners list
-```
-
-```none
-+-----------+-------+--------+---------------------+------------------------------------------------------------------------------------+
-|   TYPE    | CLASS | PARAMS |       OUTPUTS       |                     DESCRIPTION                                                    |
-+-----------+-------+--------+---------------------+------------------------------------------------------------------------------------+
-| llm-model | (any) | model  | api-key, model, url | Generates the LLM model service via the Docker Model Runner (DMR) provider.        |
-+-----------+-------+--------+---------------------+------------------------------------------------------------------------------------+
-| llm-model | (any) | model  | api-key, model, url | Generates a curl service downloading the model with the Docker Model Runner (DMR). |
-+-----------+-------+--------+---------------------+------------------------------------------------------------------------------------+
-| llm-model | (any) | model  | api-key, model, url | Runs curl to download the model with the Docker Model Runner (DMR).                |
-+-----------+-------+--------+---------------------+------------------------------------------------------------------------------------+
-```
-
 ### Without Docker
 
 ```bash

@@ -30,7 +30,7 @@ CONTAINER_IMAGE = ${WORKLOAD_NAME}:test
 .score-compose/state.yaml:
 	score-compose init \
 		--no-sample \
-		--provisioners ../score-provisioners/dmr-llm-model-via-service-provider.provisioners.yaml
+		--provisioners https://raw.githubusercontent.com/score-spec/community-provisioners/refs/heads/main/llm-model/score-compose/10-dmr-llm-model-via-service-provider.provisioners.yaml
 
 compose.yaml: score.yaml .score-compose/state.yaml Makefile
 	score-compose generate score.yaml \
