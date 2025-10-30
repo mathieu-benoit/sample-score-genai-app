@@ -1,0 +1,22 @@
+apiVersion: score.dev/v1b1
+metadata:
+  name: open-webui
+containers:
+  open-webui:
+    image: .
+    variables:
+      OPENAI_API_BASE_URL: "${resources.model.url}"
+    volumes:
+      /app/backend/data:
+        source: ${resources.data}
+        readOnly: false
+resources:
+  data:
+    type: volume
+  model:
+    type: llm-model
+service:
+  ports:
+    tcp:
+      port: 8080
+      targetPort: 8080

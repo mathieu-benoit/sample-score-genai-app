@@ -1,0 +1,49 @@
+apiVersion: score.dev/v1b1
+metadata:
+  name: open-webui
+  annotations:
+    tags: "open-webui,http,genai,llm,llama"
+containers:
+  open-webui:
+    image: .
+    variables:
+      OPENAI_API_BASE_URL: "${resources.smollm2.url}"
+      OPENAI_API_KEY: "${resources.smollm2.api-key}"
+      WEBUI_NAME: "Hello, DMR with Score Compose!"
+      WEBUI_AUTH: "false"
+      OFFLINE_MODE: "true"
+      SAFE_MODE: "true"
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+    readinessProbe:
+      httpGet:
+        path: /health/db
+        port: 8080
+    volumes:
+      /app/backend/data:
+        source: ${resources.backend-data}
+        readOnly: false
+      /data:
+        source: ${resources.tmp}
+        readOnly: false
+      /tmp:
+        source: ${resources.tmp}
+        readOnly: false
+resources:
+  data:
+    type: volume
+  backend-data:
+    type: volume
+  tmp:
+    type: volume
+  smollm2:
+    type: llm-model
+    params:
+      model: ai/smollm2:135M-Q2_K
+service:
+  ports:
+    tcp:
+      port: 8080
+      targetPort: 8080
