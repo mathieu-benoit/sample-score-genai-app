@@ -10,14 +10,16 @@ containers:
       OPENAI_API_BASE_URL: "${resources.smollm2.url}"
       OPENAI_API_KEY: "${resources.smollm2.api-key}"
       WEBUI_NAME: "Hello, DMR with Score Compose!"
-      WEBUI_AUTH: "true"
+      WEBUI_AUTH: "false"
+      OFFLINE_MODE: "true"
+      SAFE_MODE: "true"
     livenessProbe:
       httpGet:
         path: /health
         port: 8080
     readinessProbe:
       httpGet:
-        path: /health
+        path: /health/db
         port: 8080
     volumes:
       /app/backend/data:
