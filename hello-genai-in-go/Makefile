@@ -41,7 +41,7 @@ compose.yaml: score.yaml .score-compose/state.yaml Makefile
 ## Generate a compose.yaml file from the score spec and launch it.
 .PHONY: compose-up
 compose-up: compose.yaml
-	docker compose up --build -d --remove-orphans
+	docker compose up --build -d --wait --remove-orphans
 
 ## Test Docker Compose.
 .PHONY: compose-test
