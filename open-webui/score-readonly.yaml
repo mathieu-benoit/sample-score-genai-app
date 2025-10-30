@@ -26,7 +26,7 @@ containers:
         source: ${resources.backend-data}
         readOnly: false
       /data:
-        source: ${resources.tmp}
+        source: ${resources.data}
         readOnly: false
       /tmp:
         source: ${resources.tmp}
