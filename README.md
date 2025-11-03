@@ -5,7 +5,6 @@
 
 TODOs:
 - [ ] Codespace setup with DMR
-- [ ] Illustrate this use case: https://github.com/k33g/hawaiian-pizza-expert/tree/main/06-pizza-expert-mcp
 - [ ] `llm-model` provisioner with ollama service
   - https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml
   - https://www.archy.net/setting-up-ollama-with-open-webui-a-docker-compose-guide/
@@ -22,6 +21,7 @@ TODOs:
 - https://github.com/docker/hello-genai
 - https://k33g.hashnode.dev/first-contact-with-docker-model-runner-in-golang
 - https://dev.to/ajeetraina/docker-model-runner-cheatsheet-2025-37nd
+- https://www.docker.com/blog/local-llm-tool-calling-a-practical-evaluation/
 
 Tips for Open WebUI:
 - https://auriferous.in/2025/08/15/docker-powered-ai-a-beginners-guide-to-deploying-ollama-and-open-webui-with-docker-compose/
