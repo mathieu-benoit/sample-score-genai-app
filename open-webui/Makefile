@@ -34,6 +34,11 @@ dmr-up:
 		--publish 8080:${CONTAINER_NAME}:8080
 	docker compose up -d --wait --remove-orphans
 
+## Deploy score-dmr.yaml and test localhost:8080
+.PHONY: dmr-test
+dmr-test: dmr-up
+	curl http://localhost:8080
+
 ## Deploy score-drm-ro.yaml
 .PHONY: dmr-ro-up
 dmr-ro-up:
@@ -73,7 +78,7 @@ ollama-ro-up:
 
 ## Test Docker Compose.
 .PHONY: compose-test
-compose-test:
+compose-test: 
 	curl http://localhost:8080
 
 ## Delete the containers running via compose down.

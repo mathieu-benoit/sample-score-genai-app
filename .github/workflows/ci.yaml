@@ -69,7 +69,7 @@ jobs:
           file: score-compose
           token: ${{ secrets.GITHUB_TOKEN }}
           version: 'latest'
-      - name: make compose-test
+      - name: make dmr-test
         run: |
           cd open-webui
-          make compose-test
+          make dmr-test
