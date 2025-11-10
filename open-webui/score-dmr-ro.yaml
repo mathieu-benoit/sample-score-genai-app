@@ -8,7 +8,6 @@ containers:
     image: .
     variables:
       OPENAI_API_BASE_URL: "${resources.smollm2.url}"
-      OPENAI_API_KEY: "${resources.smollm2.api-key}"
       WEBUI_NAME: "Hello, DMR with Score Compose!"
       WEBUI_AUTH: "false"
       OFFLINE_MODE: "true"
@@ -23,9 +22,20 @@ containers:
         port: 8080
     volumes:
       /app/backend/data:
+        source: ${resources.backend-data}
+        readOnly: false
+      /data:
         source: ${resources.data}
+        readOnly: false
+      /tmp:
+        source: ${resources.tmp}
+        readOnly: false
 resources:
   data:
+    type: volume
+  backend-data:
+    type: volume
+  tmp:
     type: volume
   smollm2:
     type: llm-model

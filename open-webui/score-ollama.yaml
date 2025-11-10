@@ -1,0 +1,41 @@
+apiVersion: score.dev/v1b1
+metadata:
+  name: open-webui
+  annotations:
+    tags: "open-webui,http,genai,llm,llama"
+containers:
+  open-webui:
+    image: .
+    variables:
+      OLLAMA_BASE_URL: "${resources.gemma3.url}"
+      WEBUI_NAME: "Hello, Ollama with Score Compose!"
+      WEBUI_AUTH: "false"
+      OFFLINE_MODE: "true"
+      SAFE_MODE: "true"
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+    readinessProbe:
+      httpGet:
+        path: /health/db
+        port: 8080
+    volumes:
+      /app/backend/data:
+        source: ${resources.data}
+resources:
+  data:
+    type: volume
+  gemma3:
+    type: llm-model
+    params:
+      model: gemma3:270m
+  smollm2:
+    type: llm-model
+    params:
+      model: smollm2:135m
+service:
+  ports:
+    tcp:
+      port: 8080
+      targetPort: 8080

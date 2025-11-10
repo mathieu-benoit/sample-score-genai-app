@@ -8,6 +8,7 @@ make compose-up
 
 ## Notes for later
 
+- TODO: `read_only`: https://github.com/open-webui/open-webui/issues/16213
 - Illustrate the integration with OTEL: https://docs.openwebui.com/getting-started/env-configuration/#opentelemetry-configuration
 - Illustrate the use of `s3`: https://docs.openwebui.com/tutorials/s3-storage
 - Illustrate another external vector database: https://docs.openwebui.com/getting-started/env-configuration#vector-database
